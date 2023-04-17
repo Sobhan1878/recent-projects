@@ -1,0 +1,271 @@
+.header {
+    height: 100vh;
+    background-image: url(../../../assets/img/main-head.jpg);
+    background-position: center;
+    background-size: cover;
+    position: relative;
+    display: flex;
+    align-items: center;
+    background-attachment: fixed;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+.header::after {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+    content: "";
+    opacity: 0.6;
+    background-color: black;
+}
+.header-news {
+    z-index: 100;
+    display: flex;
+}
+.header-news {
+    z-index: 100;
+    display: flex;
+    width: 100%;
+    justify-content: space-evenly;
+}
+.header-news-item {
+    width: 275px;
+    background: linear-gradient(to bottom, #1c3d61, #000000b0);
+    border-radius: 25px;
+    padding: 15px;
+    color: #fff;
+    display: flex;
+    overflow: hidden;
+    text-shadow: 0.5px 0.5px black;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.header-news-item .cover {
+    border-radius: 20px;
+    overflow: hidden;
+}
+.header-news-item .cover img {
+    width: 100%;
+    display: flex;
+}
+.header-news-item h3.title {
+    margin: 10px 0;
+    text-align: justify;
+    font-size: 14px;
+    min-height: 95px;
+}
+.header-news-item .info {
+    display: flex;
+    margin: 10px 0;
+    font-size: var(--sub-info-size);
+    font-weight: bold;
+    justify-content: space-between;
+}
+.header-content {
+    z-index: 10;
+    font-size: 30px;
+    display: flex;
+    width: 20rem;
+    align-items: center;
+    justify-content: space-around;
+    flex-direction: column;
+    filter: drop-shadow(2px 4px 10px black);
+}
+.header strong {
+    font-family: "Mulish", sans-serif;
+}
+.logo img {
+    width: 100%;
+}
+.logo {
+    width: 100px;
+}
+.navigation {
+    display: flex;
+    position: fixed;
+    top: 0;
+    padding: 15px;
+    width: 100%;
+    backdrop-filter: blur(10px);
+    background: rgba(255, 255, 255, 0.3);
+    transition: all 0.2s ease;
+    align-items: center;
+    z-index: 1000;
+    color: #000000;
+}
+.navigation.onTop {
+    background-color: unset;
+    backdrop-filter: unset;
+    color: #fff;
+}
+.nav-item a {
+    display: flex;
+    padding: 5px 10px;
+    border-radius: 15px;
+    font-size: 14px;
+    transition: all 0.2s ease;
+}
+.nav-item {
+    margin-left: 20px;
+}
+.navigation .nav-item a {
+    background: white;
+    font-weight: bold;
+}
+.navigation.onTop .nav-item a {
+    background: #2f2f2fa1;
+}
+.nav-logo {
+    position: absolute;
+    display: flex;
+    left: 15px;
+    background: black;
+    height: 40px;
+    width: 110px;
+    align-items: center;
+    justify-content: center;
+    padding: 0 10px;
+    border-radius: 15px;
+    transition: all 0.2s ease;
+}
+.navigation.onTop .nav-logo {
+    background: unset;
+}
+.nav-logo img {
+    width: 100%;
+}
+
+/* footer */
+
+.footer {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    background: #000000;
+}
+.footer-first-row {
+    display: flex;
+    justify-content: space-around;
+    padding: 25px 0;
+    align-items: center;
+}
+.batech-socialmedia {
+    height: 160px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.socialmedia-caption p {
+    font-size: 14px;
+}
+.social-media-links {
+    display: flex;
+}
+.social-media-links a {
+    font-size: 27px;
+    display: flex;
+    transition: color 0.2s ease-in-out;
+    margin-left: 10px;
+}
+.batech-news-mail {
+    height: 140px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+.newsmail-form {
+    display: flex;
+    height: 45px;
+    width: 30rem;
+}
+.newsmail-form input {
+    width: 80%;
+    border: none;
+    padding: 10px;
+    border-radius: 0 7px 7px 0;
+    outline: none;
+}
+.newsmail-form .submit-btn {
+    height: 100%;
+    display: flex;
+    width: 20%;
+    border-radius: 7px 0 0 7px;
+    overflow: hidden;
+}
+.newsmail-form .submit-btn button {
+    width: 100%;
+    border: none;
+    background: #ff4057;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: bold;
+}
+.social-media-links a:hover {
+    color: #ff4057;
+}
+.batech-news-mail span {
+    font-size: 13px;
+    color: #9c9c9c;
+}
+.footer-second-row {
+    padding: 25px;
+    display: flex;
+    justify-content: space-around;
+}
+.footer-links {
+    display: flex;
+    flex-direction: column;
+}
+.footer-links a:hover::after {
+    width: 20px;
+}
+.footer-links a:hover {
+    padding: 0 25px;
+}
+.footer-column {
+    width: 240px;
+}
+.footer-links a {
+    font-weight: bold;
+    color: #ff4057;
+    position: relative;
+    padding: 0 20px;
+    font-size: 14px;
+    display: flex;
+    transition: padding 0.2s ease-in-out;
+}
+.footer-links a::after {
+    position: absolute;
+    content: "";
+    width: 15px;
+    border-radius: 10px;
+    height: 3px;
+    background: #fff;
+    right: 0;
+    top: 50%;
+    transition: width 0.1s ease-in-out;
+}
+.line-breacker {
+    width: 95%;
+    height: 2px;
+    background: #ff4057;
+    margin: auto;
+}
+.copy-right {
+    padding: 25px 0;
+    margin: auto;
+    font-size: 15px;
+}
+.line-breacker.even {
+    background: linear-gradient(225deg, #ff4057, transparent);
+}
+.line-breacker.odd {
+    background: linear-gradient(45deg, #ff4057, transparent);
+}
+.line-breacker {
+    width: 95%;
+    height: 10px;
+    margin: auto;
+}

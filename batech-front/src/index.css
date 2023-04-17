@@ -1,5 +1,44 @@
+@font-face {
+    font-family: estedad;
+    src: url(./assets/font/Estedad-FD-Medium.ttf);
+}
+@import url("https://fonts.googleapis.com/css2?family=Mulish:wght@500&display=swap");
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: estedad;
+}
+body {
+    direction: rtl;
+    color: #fff;
+}
+a {
+    text-decoration: none;
+    color: inherit;
+}
+.container {
+    margin: 0 70px;
+    padding: 20px;
+}
+.site-title {
+    margin-bottom: 15px;
+    position: relative;
+}
+h3.site-title::after {
+    content: "";
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    background: #e5ff00;
+    border-radius: 50%;
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+    filter: drop-shadow(0px 0px 5px #f3ff89);
+}
+:root {
+    --title-text-size: 14px;
+    --text-size: 13px;
+    --sub-info-size: 12px;
 }
