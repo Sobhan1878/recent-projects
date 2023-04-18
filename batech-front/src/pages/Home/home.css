@@ -35,7 +35,6 @@
     border-radius: 20px;
     box-shadow: 2px 2px 15px 0 #0000003b;
     backdrop-filter: blur(10px);
-    text-shadow: 0.5px 0.5px black;
     margin-bottom: 20px;
 }
 .main-news-item .main-card-title h3 {

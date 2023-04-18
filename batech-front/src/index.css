@@ -12,14 +12,19 @@
 body {
     direction: rtl;
     color: #fff;
+    text-shadow: 0.5px 0.5px #000;
 }
 a {
     text-decoration: none;
     color: inherit;
 }
+li {
+    list-style: none;
+}
 .container {
     margin: 0 70px;
     padding: 20px;
+    max-width: 1400px;
 }
 .site-title {
     margin-bottom: 15px;
@@ -28,10 +33,10 @@ a {
 h3.site-title::after {
     content: "";
     position: absolute;
-    width: 10px;
-    height: 10px;
-    background: #e5ff00;
-    border-radius: 50%;
+    width: 3px;
+    height: 80%;
+    background: #e4ff7d;
+    border-radius: 5px;
     top: 50%;
     left: 0;
     transform: translateY(-50%);

@@ -1,5 +1,5 @@
 import React from "react";
-import ClientLayout from "../../components/layout/client/ClientLayout";
+import ClientLayout from "../../layout/client/ClientLayout";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "./home.css";
