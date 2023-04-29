@@ -42,8 +42,28 @@ h3.site-title::after {
     transform: translateY(-50%);
     filter: drop-shadow(0px 0px 5px #f3ff89);
 }
+/* width */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: #888888;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
 :root {
     --title-text-size: 14px;
     --text-size: 13px;
     --sub-info-size: 12px;
+    --btn-color: #ffd600;
 }

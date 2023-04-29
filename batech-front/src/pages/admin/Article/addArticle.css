@@ -1,0 +1,253 @@
+.admin-form {
+    padding: 15px;
+}
+.admin-form .form-item {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+}
+.admin-form .form-item label {
+    margin-bottom: 5px;
+    font-size: var(--title-text-size);
+}
+.admin-form .form-item select:focus,
+.admin-form .form-item input:focus {
+    outline: 2px #a1a1a1 solid;
+}
+
+.admin-form .form-item select,
+.admin-form .form-item input {
+    height: 40px;
+    border: none;
+    border-radius: 5px;
+    padding: 5px 10px;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(8px);
+    color: #fff;
+    text-shadow: 0.5px 0.5px #000;
+}
+.sun-editor .se-toolbar,
+.sun-editor {
+    backdrop-filter: blur(8px);
+    border: none;
+    outline: none;
+}
+.sun-editor .se-toolbar {
+    background: none;
+    border-bottom: 2px #6f6f6f solid;
+}
+.sun-editor {
+    border-radius: 5px;
+    background: rgba(255, 255, 255, 0.1);
+    text-shadow: none;
+}
+.sun-editor .se-btn-module-border {
+    border: none;
+    background-color: rgba(255, 255, 255, 0.7);
+    margin: 5px;
+}
+.sun-editor input {
+    color: unset !important;
+    text-shadow: none !important;
+}
+.sun-editor .se-btn-select > svg {
+    margin-right: 5px;
+}
+.submit-admin-form button {
+    border: none;
+    cursor: pointer;
+    width: 100%;
+    font-size: 15px;
+    background: #39609d;
+    border-radius: 10px 0;
+    color: #fff;
+    text-shadow: 0.5px 0.5px black;
+    transition: all 0.2s ease;
+}
+.submit-admin-form button:hover {
+    background: #244984;
+}
+.submit-admin-form {
+    height: 35px;
+    width: 100%;
+    display: flex;
+}
+.res-message {
+    margin: 20px 0;
+    padding: 10px;
+    backdrop-filter: blur(8px);
+    border-radius: 5px;
+    font-size: var(--text-size);
+    animation: show 0.2s ease;
+}
+.res-message .msg::after {
+    position: absolute;
+    left: 0;
+    content: "";
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+}
+.res-message.success .msg::after {
+    background: rgb(77, 255, 0);
+    box-shadow: 0 0 10px 0px #a3ffa0;
+}
+.res-message .msg {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+@keyframes show {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+.res-message.success {
+    background: rgb(13 255 0 / 10%);
+}
+.res-message.failed {
+    background: rgb(255 0 0 / 10%);
+}
+.error-msg {
+    margin-top: 5px;
+    font-size: var(--text-size);
+    color: #fdc1ff;
+    animation: show 0.3s ease;
+}
+.admin-form input:-webkit-autofill,
+.admin-form input:-webkit-autofill:hover,
+.admin-form input:-webkit-autofill:focus,
+.admin-form select:-webkit-autofill,
+.admin-form select:-webkit-autofill:hover,
+.admin-form select:-webkit-autofill:focus {
+    text-shadow: none;
+    box-shadow: 0 0 0 100px #000 inset;
+    -webkit-text-fill-color: rgb(187, 255, 0);
+    outline: 2px rgb(187, 255, 0) solid;
+}
+.admin-form .form-item option {
+    background: #0f1223;
+}
+.custom-file-input svg {
+    font-size: 25px;
+}
+.custom-file-input {
+    width: 100%;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 5px;
+    position: relative;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    flex-direction: row-reverse;
+    overflow: hidden;
+}
+.custom-file-input span {
+    font-size: var(--text-size);
+}
+.custom-file-input input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    width: 100rem;
+}
+.modal-content button {
+    width: 100px;
+    height: 40px;
+    background: #000000;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    font-size: 15px;
+    color: #b0ff00;
+}
+.croppable-img {
+    width: 20rem;
+    display: flex;
+    justify-content: space-evenly;
+}
+.croppable-img img {
+    width: 100%;
+}
+.modal-content {
+    height: 100%;
+}
+.ReactModalPortal svg {
+    background: white;
+    font-size: 25px;
+    cursor: pointer;
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    padding: 3px;
+    position: absolute;
+}
+.cropper-section {
+    display: flex;
+    align-items: center;
+    flex-direction: row-reverse;
+    height: 100%;
+    width: 100%;
+    justify-content: space-evenly;
+}
+.crop-img-preview {
+    overflow: hidden;
+    width: 300px;
+    height: 200px;
+}
+.crop-img-preview img {
+    float: left;
+}
+.crop-options {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+}
+.output-cropped-img img {
+    width: 100%;
+    display: flex;
+}
+.output-cropped-img {
+    width: 400px;
+    margin: 15px auto 0 auto;
+    border-radius: 20px;
+    overflow: hidden;
+}
+span.custom-checkbox::after {
+    content: "";
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background: #000000;
+    left: 0;
+    border-radius: 50%;
+    margin: 0 5px;
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+span.custom-checkbox.active::after {
+    transform: translateX(40px);
+    background-color: #b0ff00;
+}
+span.custom-checkbox {
+    position: absolute;
+    width: 70px;
+    height: 25px;
+    background: rgb(255 255 255 / 18%);
+    left: 10px;
+    display: flex;
+    border-radius: 20px;
+    align-items: center;
+    overflow: hidden;
+}
+input#head_news {
+    z-index: 5;
+}
+.article-list {
+    padding: 20px;
+}

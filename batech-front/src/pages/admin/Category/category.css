@@ -1,0 +1,38 @@
+.categories table tr:nth-child(odd) {
+    background: rgba(255, 255, 255, 0.1);
+}
+.categories table td {
+    padding: 10px;
+    font-size: var(--text-size);
+}
+.categories table th {
+    padding: 5px 10px;
+    font-size: var(--title-text-size);
+    background-color: rgb(255 195 0);
+    text-shadow: none;
+    color: #000;
+}
+.categories table tr,
+.categories table th,
+.categories table td {
+    border: 2px rgba(255, 255, 255, 0.1) solid;
+}
+.categories table {
+    width: 100%;
+    border-collapse: collapse;
+}
+.categories table button {
+    width: 100%;
+}
+.categories table button {
+    border: none;
+    width: 80%;
+    border-radius: 5px;
+    height: 30px;
+    background: #fff;
+    cursor: pointer;
+    font-weight: bold;
+    display: block;
+    margin: auto;
+    font-size: var(--text-size);
+}
