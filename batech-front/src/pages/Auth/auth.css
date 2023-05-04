@@ -1,0 +1,84 @@
+.auth {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.auth-form {
+    z-index: 10;
+    padding: 15px;
+    background: rgb(0 0 0 / 5%);
+    backdrop-filter: blur(15px);
+    width: 30rem;
+    border-radius: 20px;
+    outline: 3px rgba(255, 255, 255, 0.1) solid;
+}
+.auth-form .form-item {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    margin: 40px 0;
+    justify-content: center;
+    border-bottom: 2px var(--btn-color) solid;
+}
+.auth-form .form-item input {
+    padding: 5px 10px;
+    height: 50px;
+    border: none;
+    background: transparent;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    font-size: var(--title-text-size);
+    color: var(--btn-color);
+}
+.auth-form .form-item input:focus {
+    outline: unset;
+    background: #000;
+}
+.auth-form .form-item input:focus ~ span {
+    transform: translateY(-40px);
+}
+.auth-form .form-item span {
+    position: absolute;
+    font-size: var(--title-text-size);
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    pointer-events: none;
+}
+.auth-form .submit-form button {
+    width: 110px;
+    border: none;
+    border-radius: 5px;
+    background: var(--btn-color);
+    font-weight: bold;
+    font-size: var(--title-text-size);
+    cursor: pointer;
+}
+.auth-form .submit-form {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+}
+.auth-form-links {
+    height: 100%;
+}
+.auth-form-header {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: space-between;
+    align-items: center;
+}
+.auth-form-footer {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: space-between;
+    align-items: center;
+    height: 35px;
+}
+.auth-form-links button {
+    border: none;
+    border-radius: 5px;
+    height: 100%;
+    cursor: pointer;
+    padding: 0 10px;
+    background: #000;
+    color: var(--btn-color);
+    font-size: var(--text-size);
+}

@@ -4,8 +4,8 @@ import Request from "../../../services/request";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useState } from "react";
-import { ScaleLoader } from "react-spinners";
 import { addCategoryValidation } from "../../../services/formValidationSchema";
+import AdminLoading from "../components/AdminLoading";
 
 export default function AddCategory() {
     const [loading, setLoading] = useState(false);
@@ -94,11 +94,7 @@ export default function AddCategory() {
                     </div>
                 </form>
             </div>
-            {loading && (
-                <div className="loading">
-                    <ScaleLoader color="#39609d" height={20} />
-                </div>
-            )}
+            {loading && <AdminLoading />}
             <ToastContainer />
         </AdminLayout>
     );

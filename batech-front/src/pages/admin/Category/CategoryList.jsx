@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import AdminLayout from "../../../layout/admin/AdminLayout";
 import "./category.css";
 import Request from "../../../services/request";
-import { ScaleLoader } from "react-spinners";
+import AdminLoading from "../components/AdminLoading";
 
 const req = new Request();
 
@@ -52,9 +52,7 @@ export default function CategoryList() {
                     </table>
                 </div>
             ) : (
-                <div className="loading">
-                    <ScaleLoader color="#39609d" height={20} />
-                </div>
+                <AdminLoading />
             )}
         </AdminLayout>
     );

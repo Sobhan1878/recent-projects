@@ -12,4 +12,5 @@ Route::group(['prefix' => 'v1'], function () {
     Route::get('subcategory/category_id/{id}', [SubcategoryController::class, 'getSubcategoriesWithSameCategory']);
 
     Route::resource('article', ArticleController::class);
+    Route::post('article/uploadContentImages', [ArticleController::class, 'handleUploadContentImages']);
 });

@@ -5,6 +5,9 @@ import AddCategory from "../pages/admin/Category/AddCategory";
 import AddSubcategory from "../pages/admin/Subcategory/addSubcategory";
 import CategoryList from "../pages/admin/Category/CategoryList";
 import ArticleList from "../pages/admin/Article/ArticleList";
+import EditArticle from "../pages/admin/Article/EditArticle";
+import SingleArticle from "../pages/single/SingleArticle";
+import Auth from "../pages/Auth/Auth";
 
 const routes = [
     {
@@ -34,6 +37,18 @@ const routes = [
     {
         path: "/admin/articles",
         element: <ArticleList />,
+    },
+    {
+        path: "/admin/edit-article/:slug",
+        element: <EditArticle />,
+    },
+    {
+        path: "/:category/:slug",
+        element: <SingleArticle />,
+    },
+    {
+        path: "/auth",
+        element: <Auth />,
     },
 ];
 

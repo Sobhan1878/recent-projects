@@ -47,6 +47,15 @@ export const addArticleValidation = yup.object().shape({
         .required("فیلد پیش‌نویس الزامی است.")
         .min(12, "عنوان باید بیشتر از 12 کاراکتر باشد."),
     content: yup.string().required("فیلد محتوا الزامی است."),
-    thumbnail: yup.string().required("فیلد کاور مقاله الزامی است."),
-    head_news: yup.array(),
+    thumbnail: yup
+        .mixed()
+        .required("فیلد کاور مقاله الزامی است.")
+        .test(
+            "FILE_SIZE",
+            "حجم عکس باید کمتر از 500 کیلوبایت باشد.",
+            (file) => typeof file === "string" || file.size / 1000 < 500
+        ),
+    head_news: yup.bool().nullable(),
 });
+
+export const availableFormats = ["image/jpeg", "image/png", "image/webp"];

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Resources\ArticleCollection;
+use App\Http\Resources\ArticleResource;
 use App\Models\Article;
 use app\services\StorageManager;
 use app\services\Uploader;
@@ -27,19 +28,13 @@ class ArticleController extends Controller
     {
         $cover = $this->handleBase64String($request->thumbnail);
 
-        if($request->head_news == null || !count($request->head_news) > 0)
-        {
-            $head_news = '0';
-        } else {
-            $head_news = '1';
-        }
-
         Article::create([
             'title' => $request->title,
             'subtitle' => $request->subtitle,
             'content' => $request->content,
             'cover' => $cover,
-            'head_news' => $head_news,
+            'slug' => $request->slug,
+            'head_news' => $request->head_news,
             'category_id' => $request->category_id,
             'subcategory_id' => $request->subcategory_id
         ]);
@@ -50,20 +45,40 @@ class ArticleController extends Controller
 
     }
     
-    private function handleBase64String(string $base64file)
+    private function handleBase64String(array $thubnail)
     {
-        $file = explode(',', $base64file)[1];
+        $file = explode(',', $thubnail['base64']);
+        $base64file = $file[1];
+        $mimetype = $this->getType($thubnail['type']);
 
-        $name = md5(time() . 'batech_blog') . '.png';
+        $url = md5(time() . $thubnail['name']) . $mimetype;
 
-        Storage::disk('public')->put('covers/' . $name , base64_decode($file));
+        Storage::disk('public')->put('covers/' . $url , base64_decode($base64file));
 
-        return $name;
+        return $url;
     }
 
-    public function show(string $id)
+    private function getType(string $mimetype)
     {
-        //
+        return [
+            'image/jpeg' => '.jpg',
+            'image/png' => '.png',
+            'image/webp' => '.webp',
+        ][$mimetype];
+    }
+
+    public function handleUploadContentImages(Request $request)
+    {
+        return Storage::disk('public')->put('contents/', $request->file('file'));
+    }
+
+    public function show(string $slug)
+    {
+        $article = Article::where('slug', $slug)->first();
+
+        return response()->json([
+            'data' => new ArticleResource($article)
+        ], 200);
     }
 
     public function edit(string $id)

@@ -3,8 +3,8 @@ import { useEffect, useState } from "react";
 import Request from "../../../services/request";
 import { useFormik } from "formik";
 import { ToastContainer, toast } from "react-toastify";
-import { ScaleLoader } from "react-spinners";
 import { addSubcategoryValidation } from "../../../services/formValidationSchema";
+import AdminLoading from "../components/AdminLoading";
 
 const req = new Request();
 
@@ -126,11 +126,7 @@ export default function AddSubcategory() {
                     </div>
                 </form>
             </div>
-            {loading && (
-                <div className="loading">
-                    <ScaleLoader color="#39609d" height={20} />
-                </div>
-            )}
+            {loading && <AdminLoading />}
             <ToastContainer />
         </AdminLayout>
     );

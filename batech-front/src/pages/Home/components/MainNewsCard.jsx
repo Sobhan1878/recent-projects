@@ -25,7 +25,7 @@ export default function MainNewsCard({ data }) {
                 </div>
                 <div className="main-card-info">
                     <span className="autho">نویسنده</span>
-                    <span className="category">{data.category}</span>
+                    <span className="category">{data.fa_category}</span>
                     <span className="subcategory">{data.subcategory}</span>
                     <span className="date">
                         {moment(data.create_time).locale("fa").fromNow()}

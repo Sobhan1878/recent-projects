@@ -40,6 +40,7 @@
     border-radius: 5px;
     background: rgba(255, 255, 255, 0.1);
     text-shadow: none;
+    z-index: 50;
 }
 .sun-editor .se-btn-module-border {
     border: none;
@@ -235,11 +236,10 @@ span.custom-checkbox.active::after {
     background-color: #b0ff00;
 }
 span.custom-checkbox {
-    position: absolute;
+    position: relative;
     width: 70px;
     height: 25px;
     background: rgb(255 255 255 / 18%);
-    left: 10px;
     display: flex;
     border-radius: 20px;
     align-items: center;
@@ -250,4 +250,47 @@ input#head_news {
 }
 .article-list {
     padding: 20px;
+}
+.sun-editor input {
+    background: #f1f1f1 !important;
+    padding: 6px !important;
+}
+.sun-editor input:focus {
+    outline: 2px #004972 solid !important;
+    box-shadow: unset;
+}
+.ReactModal__Overlay.ReactModal__Overlay--after-open {
+    z-index: 100;
+}
+.admin-article-item {
+    position: relative;
+}
+.article-admin-links button {
+    height: 30px;
+    width: 60px;
+    border: none;
+    margin: 5px 0;
+    border-radius: 5px;
+    font-weight: bold;
+    cursor: pointer;
+    background: var(--btn-color);
+}
+.article-admin-links button:hover {
+    background: #fff;
+}
+.article-admin-links {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    left: 15px;
+    display: flex;
+    flex-direction: column;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.2s ease;
+}
+.admin-article-item a:hover ~ .article-admin-links,
+.article-admin-links:hover {
+    opacity: 1;
+    visibility: visible;
 }

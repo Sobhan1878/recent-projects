@@ -19,9 +19,14 @@ class ArticleResource extends JsonResource
             'subtitle' => $this->subtitle,
             'content' => $this->content,
             'thumbnail' => $this->cover,
-            'category' => $this->category->fa_title,
+            'fa_category' => $this->category->fa_title,
+            'en_category' => $this->category->en_title,
             'subcategory' => $this->subcategory->fa_title,
-            'create_time' => $this->created_at
+            'category_id' => $this->category_id,
+            'subcategory_id' => $this->subcategory_id,
+            'head_news' => $this->head_news,
+            'slug' => $this->slug,
+            'create_time' => $this->created_at,
         ];
     }
 }

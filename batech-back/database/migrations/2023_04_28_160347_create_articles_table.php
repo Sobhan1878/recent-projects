@@ -17,8 +17,9 @@ return new class extends Migration
             $table->string('subtitle');
             $table->text('content');
             $table->string('cover');
+            $table->string('slug');
             $table->unsignedBigInteger('view')->default(0);
-            $table->enum('head_news', [0, 1]);
+            $table->enum('head_news', [true, false])->nullable();
 
             $table->unsignedBigInteger('category_id');
             $table->foreign('category_id')->references('id')->on('categories')->onDelete('cascade')->onUpdate('cascade');
