@@ -100,11 +100,15 @@
 }
 .auth-links a {
     display: flex;
-    padding: 5px 8px;
+    padding: 10px 8px;
     margin-left: 5px;
     background: var(--btn-color);
     border-radius: 10px 0;
-    font-size: 20px;
+    font-size: var(--title-text-size);
+    text-shadow: none;
+    font-weight: bold;
+    align-items: center;
+    flex-direction: row-reverse;
 }
 .navigation {
     position: fixed;

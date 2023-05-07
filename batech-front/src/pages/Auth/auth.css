@@ -2,6 +2,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    flex-direction: column;
 }
 .auth-form {
     z-index: 10;
@@ -11,6 +12,15 @@
     width: 30rem;
     border-radius: 20px;
     outline: 3px rgba(255, 255, 255, 0.1) solid;
+    animation: showForm 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+@keyframes showForm {
+    0% {
+        transform: scale(0);
+    }
+    100% {
+        transform: scale(1);
+    }
 }
 .auth-form .form-item {
     display: flex;
@@ -18,7 +28,7 @@
     position: relative;
     margin: 40px 0;
     justify-content: center;
-    border-bottom: 2px var(--btn-color) solid;
+    border-bottom: 2px #fff solid;
 }
 .auth-form .form-item input {
     padding: 5px 10px;
@@ -31,16 +41,26 @@
 }
 .auth-form .form-item input:focus {
     outline: unset;
-    background: #000;
+    background: rgba(255, 255, 255, 0.1);
 }
 .auth-form .form-item input:focus ~ span {
     transform: translateY(-40px);
+}
+.auth-form .form-item.active span {
+    transform: translateY(-40px);
+}
+.auth-form .form-item.active input {
+    background: rgba(255, 255, 255, 0.1);
 }
 .auth-form .form-item span {
     position: absolute;
     font-size: var(--title-text-size);
     transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     pointer-events: none;
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
 }
 .auth-form .submit-form button {
     width: 110px;
@@ -78,7 +98,8 @@
     height: 100%;
     cursor: pointer;
     padding: 0 10px;
-    background: #000;
-    color: var(--btn-color);
-    font-size: var(--text-size);
+    color: #ffffff;
+    font-size: var(--title-text-size);
+    background: rgb(0 0 0);
+    outline: 2px var(--btn-color) dashed;
 }

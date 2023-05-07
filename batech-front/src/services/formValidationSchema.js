@@ -59,3 +59,27 @@ export const addArticleValidation = yup.object().shape({
 });
 
 export const availableFormats = ["image/jpeg", "image/png", "image/webp"];
+
+export const registerValidation = yup.object().shape({
+    username: yup.string().required("نام کاربری الزامی است."),
+    email: yup
+        .string()
+        .email("ایمیل معتبر وارد کنید.")
+        .required("ایمیل الزامی است."),
+    password: yup
+        .string()
+        .required("رمز عبور الزامی است.")
+        .min(8, "حداقل ۸ کاراکتر وارد کنید."),
+    confirm_password: yup
+        .string()
+        .required("تایید رمز عبور الزامی است.")
+        .oneOf([yup.ref("password")], "با رمز عبور برابر نیست."),
+});
+
+export const loginValidation = yup.object().shape({
+    username: yup.string().required("نام کاربری الزامی است."),
+    password: yup
+        .string()
+        .required("رمز عبور الزامی است.")
+        .min(8, "حداقل ۸ کاراکتر وارد کنید."),
+});

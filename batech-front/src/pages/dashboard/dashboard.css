@@ -1,0 +1,81 @@
+.dashboard {
+    padding-top: 100px;
+    display: flex;
+    justify-content: space-between;
+}
+.dashboard-acide ul li {
+    margin: 10px 0;
+}
+.dashboard-acide ul li a {
+    font-size: var(--title-text-size);
+    display: flex;
+    background: rgba(255, 255, 255, 0.1);
+    padding: 10px;
+    border-radius: 5px;
+    backdrop-filter: blur(9px);
+}
+.dashboard-acide {
+    padding: 10px;
+    background: rgba(255, 255, 255, 0.05);
+    width: 20%;
+    height: fit-content;
+    position: sticky;
+    top: 100px;
+}
+.dashboard-content {
+    width: 75%;
+}
+.dashboard-header {
+    height: 120px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 5px;
+    backdrop-filter: blur(10px);
+    position: relative;
+    display: flex;
+    align-items: center;
+    padding: 20px;
+    justify-content: space-between;
+}
+.avatar {
+    width: 100px;
+    background: #ffffff;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 2px #fff solid;
+}
+.avatar img {
+    width: 100%;
+    display: flex;
+}
+.dahboard-main-page::after {
+    position: absolute;
+    content: "";
+    width: 100%;
+    height: 100%;
+    background: #000000ab;
+    left: 0;
+    top: 0;
+}
+.dahboard-main-page {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40rem;
+    margin: auto;
+    position: relative;
+    border-radius: 20px;
+    overflow: hidden;
+    border: 5px #f1f1f1 solid;
+}
+.dahboard-main-page img {
+    width: 100%;
+    display: flex;
+    position: relative;
+}
+.dahboard-main-page h3 {
+    position: absolute;
+    z-index: 10;
+}
+.dashboard-main-content {
+    padding: 20px 0;
+}

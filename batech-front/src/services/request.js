@@ -13,6 +13,6 @@ export default class Request {
         return axios
             .post(this.baseURL + url, data, config)
             .then((response) => response.data)
-            .catch((error) => error.response.data);
+            .catch((error) => error.response);
     }
 }

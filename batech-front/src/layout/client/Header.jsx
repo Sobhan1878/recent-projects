@@ -73,9 +73,20 @@ export default function Header() {
                             </Link>
                         </div>
                         <div className="auth-links">
-                            <Link to="/auth">
-                                <FaUser />
-                            </Link>
+                            {!sessionStorage.getItem("user") ? (
+                                <Link to="/auth">
+                                    <FaUser />
+                                </Link>
+                            ) : (
+                                <Link to="/dashboard">
+                                    <FaUser />
+                                    {
+                                        JSON.parse(
+                                            sessionStorage.getItem("user")
+                                        )["name"]
+                                    }
+                                </Link>
+                            )}
                         </div>
                     </div>
                 </div>

@@ -1,50 +1,55 @@
 import "./auth.css";
 import logo from "../../assets/img/logo.png";
-import { Link } from "react-router-dom";
+import { useEffect, useState } from "react";
+import Login from "./Login";
+import Register from "./Rgister";
+import { Navigate } from "react-router-dom";
 
-export default function Register() {
+export default function Auth() {
+    const [loggedInUser, setLoggedInUser] = useState({});
+    const [loginError, setLoginError] = useState("");
+    const [activeForm, setActiveForm] = useState("login");
+    const [navtohome, setNavToHome] = useState(false);
+
+    useEffect(() => {
+        if (Object.keys(loggedInUser).includes("id")) {
+            sessionStorage.setItem(
+                "user",
+                JSON.stringify({
+                    id: loggedInUser.id,
+                    name: loggedInUser.name,
+                })
+            );
+            setNavToHome(true);
+        }
+
+        if (Object.keys(loggedInUser).includes("message")) {
+            setLoginError(loggedInUser.message);
+        }
+    }, [loggedInUser]);
+
+    if (navtohome) {
+        return <Navigate to="/" />;
+    }
+
     return (
         <div className="heading auth">
-            <div className="auth-form register">
-                <div className="auth-form-header">
-                    <div className="logo">
-                        <Link to="/">
-                            <img src={logo} alt="batech logo" />
-                        </Link>
-                    </div>
-                    <h3>ثبت‌نام</h3>
-                </div>
-                <form>
-                    <div className="form-item">
-                        <input type="text" name="username" id="username" />
-                        <span>نام کاربری</span>
-                    </div>
-                    <div className="form-item">
-                        <input type="text" name="email" id="email" />
-                        <span>ایمیل</span>
-                    </div>
-                    <div className="form-item">
-                        <input type="password" name="password" id="password" />
-                        <span>رمز عبور</span>
-                    </div>
-                    <div className="form-item">
-                        <input
-                            type="password"
-                            name="confirm_password"
-                            id="confirm_password"
-                        />
-                        <span>تایید رمز عبور</span>
-                    </div>
-                    <div className="auth-form-footer">
-                        <div className="submit-form">
-                            <button type="submit">ثبت‌نام</button>
-                        </div>
-                        <div className="auth-form-links">
-                            <button type="submit">وارد شوید</button>
-                        </div>
-                    </div>
-                </form>
-            </div>
+            {activeForm === "login" ? (
+                <Login
+                    handleActiveForm={setActiveForm}
+                    handleLoggedInUser={setLoggedInUser}
+                    logo={logo}
+                />
+            ) : (
+                <Register
+                    handleActiveForm={setActiveForm}
+                    handleLoggedInUser={setLoggedInUser}
+                    logo={logo}
+                />
+            )}
+            {loginError.length && (
+                <span className="server-error">{loginError}</span>
+            )}
         </div>
     );
 }

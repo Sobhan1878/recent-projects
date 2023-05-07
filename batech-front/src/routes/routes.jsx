@@ -8,6 +8,7 @@ import ArticleList from "../pages/admin/Article/ArticleList";
 import EditArticle from "../pages/admin/Article/EditArticle";
 import SingleArticle from "../pages/single/SingleArticle";
 import Auth from "../pages/Auth/Auth";
+import Dashboard from "../pages/dashboard/Dashboard";
 
 const routes = [
     {
@@ -49,6 +50,10 @@ const routes = [
     {
         path: "/auth",
         element: <Auth />,
+    },
+    {
+        path: "/dashboard",
+        element: <Dashboard />,
     },
 ];
 
