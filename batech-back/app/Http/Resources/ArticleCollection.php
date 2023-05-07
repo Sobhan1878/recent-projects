@@ -2,6 +2,7 @@
 
 namespace App\Http\Resources;
 
+use App\Models\Article;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\ResourceCollection;
 
@@ -17,7 +18,7 @@ class ArticleCollection extends ResourceCollection
         return [
             'data' => ArticleResource::collection($this->collection),
             'meta' => [
-                'count' => count($this->collection)
+                'count' => count(Article::all())
             ]
         ];
     }

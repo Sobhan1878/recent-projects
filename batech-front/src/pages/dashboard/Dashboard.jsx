@@ -5,7 +5,7 @@ import dashboard from "../../assets/img/dashboardmain.png";
 import "./dashboard.css";
 import { useEffect, useState } from "react";
 import Request from "../../services/request";
-import ClientLoading from "../Home/components/ClientLoading";
+import ClientLoading from "../../layout/client/components/ClientLoading";
 
 const req = new Request();
 

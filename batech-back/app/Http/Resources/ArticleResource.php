@@ -27,6 +27,7 @@ class ArticleResource extends JsonResource
             'head_news' => $this->head_news,
             'slug' => $this->slug,
             'create_time' => $this->created_at,
+            'views' => $this->view
         ];
     }
 }

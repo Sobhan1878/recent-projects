@@ -54,6 +54,7 @@
     background: rgba(255, 255, 255, 0.1);
     border-radius: 10px;
     overflow: hidden;
+    min-height: 85px;
 }
 .last-article-item p {
     width: 70%;

@@ -2,12 +2,16 @@
     font-family: estedad;
     src: url(./assets/font/Estedad-FD-Medium.ttf);
 }
-@import url("https://fonts.googleapis.com/css2?family=Mulish:wght@500&display=swap");
+
+@font-face {
+    font-family: vazirmatn;
+    src: url(./assets/font/Vazirmatn-Regular.woff2);
+}
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: estedad;
+    font-family: vazirmatn;
 }
 body {
     direction: rtl;

@@ -10,6 +10,7 @@ export default function Auth() {
     const [loginError, setLoginError] = useState("");
     const [activeForm, setActiveForm] = useState("login");
     const [navtohome, setNavToHome] = useState(false);
+    const [loading, setLoading] = useState(false);
 
     useEffect(() => {
         if (Object.keys(loggedInUser).includes("id")) {
@@ -33,23 +34,26 @@ export default function Auth() {
     }
 
     return (
-        <div className="heading auth">
-            {activeForm === "login" ? (
-                <Login
-                    handleActiveForm={setActiveForm}
-                    handleLoggedInUser={setLoggedInUser}
-                    logo={logo}
-                />
-            ) : (
-                <Register
-                    handleActiveForm={setActiveForm}
-                    handleLoggedInUser={setLoggedInUser}
-                    logo={logo}
-                />
-            )}
-            {loginError.length && (
-                <span className="server-error">{loginError}</span>
-            )}
-        </div>
+        <>
+            {loading && <ClientLoading />}
+            <div className="heading auth">
+                {activeForm === "login" ? (
+                    <Login
+                        handleActiveForm={setActiveForm}
+                        handleLoggedInUser={setLoggedInUser}
+                        logo={logo}
+                    />
+                ) : (
+                    <Register
+                        handleActiveForm={setActiveForm}
+                        handleLoggedInUser={setLoggedInUser}
+                        logo={logo}
+                    />
+                )}
+                {loginError.length && (
+                    <span className="server-error">{loginError}</span>
+                )}
+            </div>
+        </>
     );
 }

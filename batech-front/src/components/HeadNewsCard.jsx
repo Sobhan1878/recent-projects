@@ -1,22 +1,27 @@
-import cover1 from "../assets/img/banners/ban main/ban3.jpg";
+import moment from "jalali-moment";
+import { Link } from "react-router-dom";
 
-export default function HeadNewsCard() {
-    return (
-        <div className="header-news-item">
-            <div className="cover">
-                <img src={cover1} alt="" />
-            </div>
-            <h3 className="title">
-                از M3 خبری نیست؛ مک بوک ایر 15 اینچی احتمالاً با «تراشه هم‌سطح
-                M2» معرفی می‌شود
-            </h3>
-            <div className="info">
-                <div className="author">
-                    <span>اسم نویسنده</span>
+export default function HeadNewsCard({ article }) {
+    return article ? (
+        <Link to={`/${article.en_category}/${article.slug}`}>
+            <div className="header-news-item">
+                <div className="cover">
+                    <img src={article.thumbnail} alt="" />
                 </div>
-                <div className="createdAt">تایم خبر</div>
-                <div className="category">دسته‌بندی خبر</div>
+                <h3 className="title">{article.title}</h3>
+                <div className="info">
+                    <div className="author">
+                        <span>اسم نویسنده</span>
+                    </div>
+                    <div className="createdAt">
+                        {moment(article.create_time).locale("fa").fromNow()}
+                    </div>
+                    <div className="category">{article.fa_category}</div>
+                    <div className="subcategory">{article.subcategory}</div>
+                </div>
             </div>
-        </div>
+        </Link>
+    ) : (
+        <span>loading</span>
     );
 }

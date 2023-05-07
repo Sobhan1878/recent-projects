@@ -1,12 +1,9 @@
 import { useEffect, useRef, useState } from "react";
 import logo from "../../assets/img/logo.png";
-import ScrollReveal from "scrollreveal";
 import { Link } from "react-router-dom";
 import CategoriesWrapper from "../../components/CategoriesWrapper";
 import Request from "../../services/request";
 import { useDispatch } from "react-redux";
-import { onLoading } from "../../redux/reducers/singleArticleReducer";
-import ClientLoading from "../../pages/Home/components/ClientLoading";
 import { FaUser } from "react-icons/fa";
 
 const req = new Request();
@@ -28,16 +25,6 @@ export default function Header() {
             navbar.current.classList.remove("onTop");
         }
     }, [scrollY]);
-
-    // useEffect(() => {
-    //     ScrollReveal({
-    //         reset: true,
-    //         origin: "top",
-    //         duration: 1500,
-    //         distance: "85px",
-    //         delay: 300,
-    //     }).reveal(".header-news");
-    // }, []);
 
     useEffect(() => {
         if (!Object.values(categories).length) {

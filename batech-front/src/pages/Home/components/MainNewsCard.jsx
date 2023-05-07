@@ -6,14 +6,11 @@ export default function MainNewsCard({ data }) {
             <div
                 className="cover-side"
                 style={{
-                    backgroundImage: `url(http://localhost:8000/storage/covers/${data.thumbnail})`,
+                    backgroundImage: `url(${data.thumbnail})`,
                 }}
             >
                 <div className="thumbnail">
-                    <img
-                        src={`http://localhost:8000/storage/covers/${data.thumbnail}`}
-                        alt={data.title}
-                    />
+                    <img src={data.thumbnail} alt={data.title} />
                 </div>
             </div>
             <div className="content-side">

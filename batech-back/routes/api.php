@@ -13,6 +13,9 @@ Route::group(['prefix' => 'v1'], function () {
     Route::get('subcategory/category_id/{id}', [SubcategoryController::class, 'getSubcategoriesWithSameCategory']);
 
     Route::resource('article', ArticleController::class);
+    Route::get('getHeadingArticles', [ArticleController::class, 'getHeadingArticles']);
+    Route::get('getMostViewArticles', [ArticleController::class, 'getMostViewArticles']);
+    Route::get('getSimilarArticles/{slug}', [ArticleController::class, 'getSimilarArticles']);
     Route::post('article/uploadContentImages', [ArticleController::class, 'handleUploadContentImages']);
 
     Route::resource('user', UserController::class);

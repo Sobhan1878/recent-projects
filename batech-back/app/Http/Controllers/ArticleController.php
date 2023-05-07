@@ -5,8 +5,6 @@ namespace App\Http\Controllers;
 use App\Http\Resources\ArticleCollection;
 use App\Http\Resources\ArticleResource;
 use App\Models\Article;
-use app\services\StorageManager;
-use app\services\Uploader;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
@@ -15,6 +13,29 @@ class ArticleController extends Controller
     public function index()
     {
         $articles = Article::paginate(10)->sortBydesc('created_at');
+
+        return response()->json(new ArticleCollection($articles), 200);
+    }
+
+    public function getHeadingArticles()
+    {
+        $articles = Article::where('head_news', 1)->get();
+
+        return response()->json(new ArticleCollection($articles), 200);
+    }
+
+    public function getMostViewArticles()
+    {
+        $articles = Article::orderBy('view', 'desc')->paginate(5);
+
+        return response()->json(new ArticleCollection($articles), 200);
+    }
+
+    public function getSimilarArticles($slug)
+    {
+        $article = Article::where('slug', $slug)->first();
+
+        $articles = Article::where('category_id', $article->category_id)->where('subcategory_id', $article->subcategory_id)->paginate(5);
 
         return response()->json(new ArticleCollection($articles), 200);
     }

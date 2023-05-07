@@ -1,9 +1,8 @@
 import { Swiper, SwiperSlide } from "swiper/react";
-import cover from "../../../assets/img/banners/ban main/ban2.jpg";
-import cover1 from "../../../assets/img/banners/ban main/ban3.jpg";
 import logo from "../../../assets/img/logo.png";
+import HeadNewsCard from "../../../components/HeadNewsCard";
 
-export default function SiteHeading() {
+export default function SiteHeading({ data }) {
     return (
         <div className="heading">
             <div className="container">
@@ -25,126 +24,11 @@ export default function SiteHeading() {
                             disableOnInteraction: false,
                         }}
                     >
-                        <SwiperSlide>
-                            <div className="header-news-item">
-                                <div className="cover">
-                                    <img src={cover} alt="" />
-                                </div>
-                                <h3 className="title">
-                                    از M3 خبری نیست؛ مک بوک ایر 15 اینچی
-                                    احتمالاً با «تراشه هم‌سطح M2» معرفی می‌شود
-                                </h3>
-                                <div className="info">
-                                    <div className="author">
-                                        <span>اسم نویسنده</span>
-                                    </div>
-                                    <div className="createdAt">تایم خبر</div>
-                                    <div className="category">
-                                        دسته‌بندی خبر
-                                    </div>
-                                </div>
-                            </div>
-                        </SwiperSlide>
-                        <SwiperSlide>
-                            <div className="header-news-item">
-                                <div className="cover">
-                                    <img src={cover} alt="" />
-                                </div>
-                                <h3 className="title">
-                                    از M3 خبری نیست؛ مک بوک ایر 15 اینچی
-                                    احتمالاً با «تراشه هم‌سطح M2» معرفی می‌شود
-                                </h3>
-                                <div className="info">
-                                    <div className="author">
-                                        <span>اسم نویسنده</span>
-                                    </div>
-                                    <div className="createdAt">تایم خبر</div>
-                                    <div className="category">
-                                        دسته‌بندی خبر
-                                    </div>
-                                </div>
-                            </div>
-                        </SwiperSlide>
-                        <SwiperSlide>
-                            <div className="header-news-item">
-                                <div className="cover">
-                                    <img src={cover} alt="" />
-                                </div>
-                                <h3 className="title">
-                                    از M3 خبری نیست؛ مک بوک ایر 15 اینچی
-                                    احتمالاً با «تراشه هم‌سطح M2» معرفی می‌شود
-                                </h3>
-                                <div className="info">
-                                    <div className="author">
-                                        <span>اسم نویسنده</span>
-                                    </div>
-                                    <div className="createdAt">تایم خبر</div>
-                                    <div className="category">
-                                        دسته‌بندی خبر
-                                    </div>
-                                </div>
-                            </div>
-                        </SwiperSlide>
-                        <SwiperSlide>
-                            <div className="header-news-item">
-                                <div className="cover">
-                                    <img src={cover1} alt="" />
-                                </div>
-                                <h3 className="title">
-                                    شیائومی ۱۳ اولترا فقط با یک درصد شارژ، ۶۰
-                                    دقیقه کار می‌کند
-                                </h3>
-                                <div className="info">
-                                    <div className="author">
-                                        <span>اسم نویسنده</span>
-                                    </div>
-                                    <div className="createdAt">تایم خبر</div>
-                                    <div className="category">
-                                        دسته‌بندی خبر
-                                    </div>
-                                </div>
-                            </div>
-                        </SwiperSlide>
-                        <SwiperSlide>
-                            <div className="header-news-item">
-                                <div className="cover">
-                                    <img src={cover1} alt="" />
-                                </div>
-                                <h3 className="title">
-                                    شیائومی ۱۳ اولترا فقط با یک درصد شارژ، ۶۰
-                                    دقیقه کار می‌کند
-                                </h3>
-                                <div className="info">
-                                    <div className="author">
-                                        <span>اسم نویسنده</span>
-                                    </div>
-                                    <div className="createdAt">تایم خبر</div>
-                                    <div className="category">
-                                        دسته‌بندی خبر
-                                    </div>
-                                </div>
-                            </div>
-                        </SwiperSlide>
-                        <SwiperSlide>
-                            <div className="header-news-item">
-                                <div className="cover">
-                                    <img src={cover1} alt="" />
-                                </div>
-                                <h3 className="title">
-                                    شیائومی ۱۳ اولترا فقط با یک درصد شارژ، ۶۰
-                                    دقیقه کار می‌کند
-                                </h3>
-                                <div className="info">
-                                    <div className="author">
-                                        <span>اسم نویسنده</span>
-                                    </div>
-                                    <div className="createdAt">تایم خبر</div>
-                                    <div className="category">
-                                        دسته‌بندی خبر
-                                    </div>
-                                </div>
-                            </div>
-                        </SwiperSlide>
+                        {data.map((article) => (
+                            <SwiperSlide key={article.slug}>
+                                <HeadNewsCard article={article} />
+                            </SwiperSlide>
+                        ))}
                     </Swiper>
                 </div>
             </div>

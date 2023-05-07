@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from "react";
 import ClientLayout from "../../layout/client/ClientLayout";
 import { Link, Navigate, useParams } from "react-router-dom";
-import Request from "../../services/request";
-import ClientLoading from "../Home/components/ClientLoading";
+import ClientLoading from "../../layout/client/components/ClientLoading";
 import moment from "jalali-moment";
 import parse from "html-react-parser";
 import "./singleArticle.css";
@@ -10,27 +9,33 @@ import { useDispatch, useSelector } from "react-redux";
 import {
     getArticle,
     getLastArticles,
+    getSimilarArticles,
     offLoading,
     onLoading,
 } from "../../redux/reducers/singleArticleReducer";
 import { useLayoutEffect } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
+import { getMostViewArticles } from "../../redux/reducers/homeReducer";
+import HeadNewsCard from "../../components/HeadNewsCard";
 
 export default function SingleArticle() {
     const params = useParams();
     const dispatch = useDispatch();
-    const { article, loading, lastArticles } = useSelector(
+    const { article, loading, lastArticles, similarArticles } = useSelector(
         (state) => state.singleArticle
     );
+    const { mostViewArticles } = useSelector((state) => state.home);
 
     useEffect(() => {
         if (
             Object.values(lastArticles).length &&
-            Object.values(article).length
+            Object.values(article).length &&
+            Object.values(mostViewArticles).length &&
+            Object.values(similarArticles).length
         ) {
             dispatch(offLoading());
         }
-    }, [article, lastArticles]);
+    }, [article, lastArticles, mostViewArticles]);
 
     useLayoutEffect(() => {
         dispatch(getArticle(params.slug));
@@ -44,6 +49,18 @@ export default function SingleArticle() {
         }
     }, [lastArticles]);
 
+    useEffect(() => {
+        if (!Object.values(similarArticles).length) {
+            dispatch(getSimilarArticles(params.slug));
+        }
+    }, [similarArticles]);
+
+    useEffect(() => {
+        if (!Object.values(mostViewArticles).length) {
+            dispatch(getMostViewArticles());
+        }
+    }, [mostViewArticles]);
+
     return loading ? (
         <ClientLoading />
     ) : (
@@ -52,7 +69,7 @@ export default function SingleArticle() {
                 <div className="single-sidebar">
                     <h3 className="site-title">جدیدترین مطالب</h3>
                     <div className="single-last-articles">
-                        {lastArticles.data.map((lastArticle) => {
+                        {lastArticles.map((lastArticle) => {
                             return (
                                 <Link
                                     to={`/${lastArticle.en_category}/${lastArticle.slug}`}
@@ -61,8 +78,8 @@ export default function SingleArticle() {
                                     <div className="last-article-item">
                                         <p>{lastArticle.title}</p>
                                         <img
-                                            src={`http://localhost:8000/storage/covers/${lastArticle.thumbnail}`}
-                                            alt={`http://localhost:8000/storage/covers/${lastArticle.thumbnail}`}
+                                            src={`${lastArticle.thumbnail}`}
+                                            alt={`${lastArticle.thumbnail}`}
                                         />
                                     </div>
                                 </Link>
@@ -71,29 +88,28 @@ export default function SingleArticle() {
                     </div>
                     <div className="single-similar-articles">
                         <h3 className="site-title">مطالب مشابه</h3>
-                        <Swiper>
-                            <SwiperSlide>
-                                <div className="similar-article-item">
-                                    <img src="" alt="" />
-                                    <p></p>
-                                </div>
-                            </SwiperSlide>
+                        <Swiper slidesPerView={1} spaceBetween={30}>
+                            {similarArticles.data.map((article) => (
+                                <SwiperSlide key={article.slug}>
+                                    <HeadNewsCard article={article} />
+                                </SwiperSlide>
+                            ))}
                         </Swiper>
                     </div>
                     <div className="single-most-viewd-articles">
                         <h3 className="site-title">پربازدیدترین مطالب</h3>
                         <div className="single-last-articles">
-                            {lastArticles.data.map((lastArticle) => {
+                            {mostViewArticles.data.map((mostViewArticle) => {
                                 return (
                                     <Link
-                                        to={`/${lastArticle.en_category}/${lastArticle.slug}`}
-                                        key={lastArticle.slug}
+                                        to={`/${mostViewArticle.en_category}/${mostViewArticle.slug}`}
+                                        key={mostViewArticle.slug}
                                     >
                                         <div className="last-article-item">
-                                            <p>{lastArticle.title}</p>
+                                            <p>{mostViewArticle.title}</p>
                                             <img
-                                                src={`http://localhost:8000/storage/covers/${lastArticle.thumbnail}`}
-                                                alt={`http://localhost:8000/storage/covers/${lastArticle.thumbnail}`}
+                                                src={`${mostViewArticle.thumbnail}`}
+                                                alt={`${mostViewArticle.thumbnail}`}
                                             />
                                         </div>
                                     </Link>
@@ -122,8 +138,8 @@ export default function SingleArticle() {
                     </div>
                     <div className="single-article-cover">
                         <img
-                            src={`http://localhost:8000/storage/covers/${article.data.thumbnail}`}
-                            alt={`http://localhost:8000/storage/covers/${article.data.thumbnail}`}
+                            src={`${article.data.thumbnail}`}
+                            alt={`${article.data.thumbnail}`}
                         />
                     </div>
                     <div className="single-article-content">
