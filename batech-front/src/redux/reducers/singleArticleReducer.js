@@ -7,6 +7,7 @@ const initialState = {
     article: {},
     lastArticles: {},
     similarArticles: {},
+    comments: {},
     loading: true,
 };
 
@@ -25,6 +26,10 @@ export const getSimilarArticles = createAsyncThunk(
     }
 );
 
+export const getComments = createAsyncThunk("getComments", async (id) => {
+    return await req.get(`comment/article_id/${id}/`);
+});
+
 const singleArticleReducer = createSlice({
     name: "singleArticle",
     initialState,
@@ -39,6 +44,8 @@ const singleArticleReducer = createSlice({
             state.article = {};
             state.lastArticles = {};
             state.similarArticles = {};
+            state.comments = {};
+            state.loading = true;
         },
     },
     extraReducers: (builder) => {
@@ -57,6 +64,9 @@ const singleArticleReducer = createSlice({
             })
             .addCase(getSimilarArticles.fulfilled, (state, action) => {
                 state.similarArticles = action.payload;
+            })
+            .addCase(getComments.fulfilled, (state, action) => {
+                state.comments = action.payload;
             });
     },
 });

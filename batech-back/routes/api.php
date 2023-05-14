@@ -3,6 +3,7 @@
 use App\Http\Controllers\ArticleController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\CommentController;
 use App\Http\Controllers\SubcategoryController;
 use App\Http\Controllers\UserController;
 
@@ -21,4 +22,7 @@ Route::group(['prefix' => 'v1'], function () {
     Route::resource('user', UserController::class);
     Route::post('user/login', [UserController::class, 'login']);
     Route::get('user_logout', [UserController::class, 'logout']);
+
+    Route::resource('comment', CommentController::class);
+    Route::get('comment/article_id/{id}', [CommentController::class, 'getArticleComments']);
 });

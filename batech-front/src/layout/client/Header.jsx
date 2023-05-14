@@ -26,11 +26,11 @@ export default function Header() {
         }
     }, [scrollY]);
 
-    useEffect(() => {
-        if (!Object.values(categories).length) {
-            req.get("category/").then((res) => setCategories(res.data));
-        }
-    }, [categories]);
+    // useEffect(() => {
+    //     if (!Object.values(categories).length) {
+    //         req.get("category/").then((res) => setCategories(res.data));
+    //     }
+    // }, [categories]);
 
     return (
         <>
@@ -39,9 +39,9 @@ export default function Header() {
                     <div className="navigation-right-side">
                         <div className="nav-item categories">
                             <a href="">دسته‌بندی‌ها</a>
-                            {categories.length && (
+                            {/* {categories.length && (
                                 <CategoriesWrapper categories={categories} />
-                            )}
+                            )} */}
                         </div>
                         <div className="nav-item">
                             <a href="">مقالات</a>

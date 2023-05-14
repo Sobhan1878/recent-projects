@@ -12,14 +12,14 @@ class ArticleController extends Controller
 {
     public function index()
     {
-        $articles = Article::paginate(10)->sortBydesc('created_at');
+        $articles = Article::orderBy('created_at', 'DESC')->paginate(10);
 
         return response()->json(new ArticleCollection($articles), 200);
     }
 
     public function getHeadingArticles()
     {
-        $articles = Article::where('head_news', 1)->get();
+        $articles = Article::where('head_news', 1)->get()->sortBydesc('created_at');
 
         return response()->json(new ArticleCollection($articles), 200);
     }
@@ -35,7 +35,7 @@ class ArticleController extends Controller
     {
         $article = Article::where('slug', $slug)->first();
 
-        $articles = Article::where('category_id', $article->category_id)->where('subcategory_id', $article->subcategory_id)->paginate(5);
+        $articles = Article::orderBy('created_at', 'DESC')->where('category_id', $article->category_id)->where('subcategory_id', $article->subcategory_id)->paginate(5);
 
         return response()->json(new ArticleCollection($articles), 200);
     }
@@ -75,6 +75,8 @@ class ArticleController extends Controller
         $url = md5(time() . $thubnail['name']) . $mimetype;
 
         Storage::disk('public')->put('covers/' . $url , base64_decode($base64file));
+
+        $url = env('APP_URL') . 'storage/covers/' . $url;
 
         return $url;
     }

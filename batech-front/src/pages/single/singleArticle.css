@@ -73,3 +73,108 @@
 .single-similar-articles {
     margin: 15px 0;
 }
+.comment-logo img {
+    width: 100%;
+    display: flex;
+}
+.comment-logo {
+    width: 70px;
+    margin: auto;
+    padding: 10px;
+    background: var(--btn-color);
+    border-radius: 25px 0;
+}
+.comments-header span {
+    display: block;
+    text-align: center;
+    margin: 10px;
+    font-size: var(--title-text-size);
+}
+.single-comments {
+    margin-top: 50px;
+}
+.comments-header button {
+    display: block;
+    margin: auto;
+    padding: 5px 10px;
+    background: rgba(255, 255, 255, 0.09);
+    border: none;
+    border-radius: 5px;
+    font-size: var(--text-size);
+    cursor: pointer;
+    color: #fff;
+}
+.single-comments-list {
+    margin-top: 40px;
+}
+.comment-item {
+    padding: 10px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 10px;
+    position: relative;
+}
+.comment-user-info {
+    display: flex;
+    align-items: center;
+}
+.comment-user-info .user-avatar {
+    width: 50px;
+    background: rgb(255, 255, 255);
+    border-radius: 50%;
+    overflow: hidden;
+    margin-left: 10px;
+}
+.comment-user-info .user-avatar img {
+    width: 100%;
+    display: flex;
+}
+.comment-user-info .user-avatar::after {
+    position: absolute;
+    content: "";
+    width: 2px;
+    height: calc(100% - 70px);
+    background: var(--btn-color);
+    right: 35px;
+}
+.comment-user-info strong {
+    margin-left: 10px;
+    font-size: var(--title-text-size);
+}
+.comment-user-info span {
+    font-size: var(--text-size);
+}
+.comment-body {
+    width: 85%;
+    display: flex;
+    margin: auto;
+    flex-direction: column;
+}
+.comment-body p {
+    font-size: var(--title-text-size);
+    padding: 10px 0;
+}
+.comment-actions {
+    display: flex;
+}
+.comment-actions svg {
+    display: flex;
+    font-size: 18px;
+    margin-left: 10px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+.add-comment-form textarea:focus {
+    outline: 2px rgba(255, 255, 255, 0.1) solid;
+}
+.add-comment-form textarea {
+    width: 100% !important;
+    padding: 10px;
+    border: none;
+    border-radius: 10px;
+    background: rgba(255, 255, 255, 0.05);
+    color: #fff;
+    font-size: var(--title-text-size);
+}
+.add-comment-form {
+    margin-top: 20px;
+}

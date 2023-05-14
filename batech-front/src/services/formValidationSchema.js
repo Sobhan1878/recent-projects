@@ -83,3 +83,10 @@ export const loginValidation = yup.object().shape({
         .required("رمز عبور الزامی است.")
         .min(8, "حداقل ۸ کاراکتر وارد کنید."),
 });
+
+export const addCommentValidation = yup.object().shape({
+    comment: yup
+        .string()
+        .required("نظر خود را بنویسید.")
+        .min(4, "نظر شما کوتاه است."),
+});
