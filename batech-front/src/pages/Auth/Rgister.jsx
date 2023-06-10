@@ -2,6 +2,7 @@ import { useFormik } from "formik";
 import { Link } from "react-router-dom";
 import { registerValidation } from "../../services/formValidationSchema";
 import Request from "../../services/request";
+import { ScaleLoader } from "react-spinners";
 
 const req = new Request();
 
@@ -9,6 +10,8 @@ export default function Rgister({
     handleActiveForm,
     handleLoggedInUser,
     logo,
+    setLoading,
+    onLoad,
 }) {
     const { values, errors, handleSubmit, handleChange, resetForm } = useFormik(
         {
@@ -20,6 +23,7 @@ export default function Rgister({
             },
             validationSchema: registerValidation,
             onSubmit: () => {
+                setLoading(true);
                 req.post("user/", values).then((res) =>
                     handleLoggedInUser(res.data)
                 );
@@ -29,6 +33,11 @@ export default function Rgister({
     );
     return (
         <div className="auth-form register">
+            {onLoad && (
+                <div className="form-loader">
+                    <ScaleLoader color="#fff" height={20} />
+                </div>
+            )}
             <div className="auth-form-header">
                 <div className="logo">
                     <Link to="/">

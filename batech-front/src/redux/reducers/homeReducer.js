@@ -43,6 +43,12 @@ const homeReducer = createSlice({
         onLoading(state) {
             state.loading = true;
         },
+        emptyHomeData(state) {
+            state.articles = {};
+            state.headArticles = {};
+            state.mostViewArticles = {};
+            state.loading = true;
+        },
     },
     extraReducers: (builder) => {
         builder
@@ -68,4 +74,4 @@ const homeReducer = createSlice({
 });
 
 export default homeReducer.reducer;
-export const { offLoading, onLoading } = homeReducer.actions;
+export const { offLoading, onLoading, emptyHomeData } = homeReducer.actions;

@@ -14,17 +14,17 @@ export default function Header() {
     const [categories, setCategories] = useState({});
     const dispatch = useDispatch();
 
-    document.addEventListener("scroll", () => {
-        setScrollY(window.scrollY);
-    });
+    // document.addEventListener("scroll", () => {
+    //     setScrollY(window.scrollY);
+    // });
 
-    useEffect(() => {
-        if (!scrollY) {
-            navbar.current.classList.add("onTop");
-        } else {
-            navbar.current.classList.remove("onTop");
-        }
-    }, [scrollY]);
+    // useEffect(() => {
+    //     if (!scrollY) {
+    //         navbar.current.classList.add("onTop");
+    //     } else {
+    //         navbar.current.classList.remove("onTop");
+    //     }
+    // }, [scrollY]);
 
     // useEffect(() => {
     //     if (!Object.values(categories).length) {
@@ -67,11 +67,13 @@ export default function Header() {
                             ) : (
                                 <Link to="/dashboard">
                                     <FaUser />
-                                    {
-                                        JSON.parse(
-                                            sessionStorage.getItem("user")
-                                        )["name"]
-                                    }
+                                    <span>
+                                        {
+                                            JSON.parse(
+                                                sessionStorage.getItem("user")
+                                            )["name"]
+                                        }
+                                    </span>
                                 </Link>
                             )}
                         </div>

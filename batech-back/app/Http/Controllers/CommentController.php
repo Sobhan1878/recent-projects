@@ -19,7 +19,7 @@ class CommentController extends Controller
 
     public function getArticleComments($id)
     {
-        $comments = Article::findOrFail($id)->comments()->get();
+        $comments = Article::findOrFail($id)->comments()->get()->sortBydesc('created_at');
 
         return response()->json(new CommentCollection($comments), 200);
     }
@@ -27,9 +27,12 @@ class CommentController extends Controller
     public function store(Request $request)
     {
         Comment::create([
+            'unique_id' => $request->id,
             'comment' => $request->comment,
             'article_id' => $request->article_id,
-            'user_id' => $request->user_id
+            'user_id' => $request->user_id,
+            'comment_id' => $request->comment_id ?? null,
+            'type' => $request->type
         ]);
 
         return response()->json([

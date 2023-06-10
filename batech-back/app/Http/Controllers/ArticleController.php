@@ -99,6 +99,10 @@ class ArticleController extends Controller
     {
         $article = Article::where('slug', $slug)->first();
 
+        $article->update([
+            'view' => $article->view + 1
+        ]);
+
         return response()->json([
             'data' => new ArticleResource($article)
         ], 200);

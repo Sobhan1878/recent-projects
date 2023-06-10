@@ -43,7 +43,6 @@ export default function AddArticle({ editableArticle }) {
         handleSubmit,
         values,
         errors,
-        touched,
         resetForm,
         setValues,
         setErrors,
@@ -350,8 +349,8 @@ export default function AddArticle({ editableArticle }) {
                             <div className="output-cropped-img">
                                 {editableArticle && !croppedImg.base64 ? (
                                     <img
-                                        src={`http://localhost:8000/storage/covers/${editableArticle.thumbnail}`}
-                                        alt={`http://localhost:8000/storage/covers/${editableArticle.thumbnail}`}
+                                        src={editableArticle.thumbnail}
+                                        alt={editableArticle.thumbnail}
                                     />
                                 ) : (
                                     <img

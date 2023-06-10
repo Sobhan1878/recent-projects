@@ -23,7 +23,7 @@
     border-radius: 10px 0;
     font-size: var(--title-text-size);
     text-shadow: none;
-    font-weight: bold;
+    color: #fff;
     align-items: center;
     flex-direction: row-reverse;
 }
@@ -32,10 +32,10 @@
     top: 0;
     width: 100%;
     backdrop-filter: blur(10px);
-    background: rgb(0 0 0 / 70%);
+    background: linear-gradient(45deg, #19415a, #002148c7);
     transition: all 0.2s ease;
     z-index: 1000;
-    color: #000000;
+    border-bottom: 2px var(--btn-color) solid;
 }
 .navigation .container {
     display: flex;
@@ -43,27 +43,16 @@
     align-items: center;
     justify-content: space-between;
 }
-.navigation.onTop {
-    background-color: unset;
-    backdrop-filter: unset;
-}
 .nav-item a {
     display: flex;
     padding: 3px 10px;
     border-radius: 5px;
     font-size: 14px;
     transition: all 0.2s ease;
+    background: var(--btn-color);
 }
 .nav-item {
     margin-left: 20px;
-}
-.navigation .nav-item a {
-    background: white;
-    text-shadow: none;
-    font-weight: bold;
-}
-.navigation.onTop .nav-item a {
-    background: var(--btn-color);
 }
 .nav-logo {
     display: flex;
@@ -89,7 +78,6 @@
 /* footer */
 
 .footer {
-    padding: 20px;
     display: flex;
     flex-direction: column;
     background-image: url(../../assets/img/main-head.jpg);
@@ -98,9 +86,12 @@
     position: relative;
     background-attachment: fixed;
 }
+.footer .container {
+    z-index: 10;
+}
 .footer-first-row {
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
     padding: 25px 0;
     align-items: center;
 }
@@ -137,94 +128,74 @@
     width: 80%;
     border: none;
     padding: 10px;
-    border-radius: 0 7px 7px 0;
+    border-radius: 0 5px 5px 0;
     outline: none;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(5px);
+    color: #fff;
 }
 .newsmail-form .submit-btn {
     height: 100%;
     display: flex;
     width: 20%;
-    border-radius: 7px 0 0 7px;
+    border-radius: 5px 0 0 5px;
     overflow: hidden;
 }
 .newsmail-form .submit-btn button {
     width: 100%;
     border: none;
-    background: #ffd600;
     cursor: pointer;
-    font-size: 14px;
+    font-size: var(--title-text-size);
     font-weight: bold;
 }
 .social-media-links a:hover {
-    color: #ffd600;
+    color: #70baff;
 }
 .batech-news-mail span {
     font-size: 13px;
 }
 .footer-second-row {
-    padding: 25px;
+    padding: 25px 0;
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
 }
 .footer-links {
     display: flex;
     flex-direction: column;
 }
-.footer-links a:hover::after {
-    width: 20px;
-}
 .footer-links a:hover {
-    padding: 0 25px;
+    padding: 5px 10px;
 }
 .footer-column {
     width: 240px;
 }
 .footer-links a {
-    font-weight: bold;
-    color: #ffd600;
     position: relative;
-    padding: 0 20px;
-    font-size: 14px;
+    padding: 5px;
+    font-size: var(--text-size);
     display: flex;
-    transition: padding 0.2s ease-in-out;
-}
-.footer-links a::after {
-    position: absolute;
-    content: "";
-    width: 15px;
-    border-radius: 10px;
-    height: 3px;
-    background: #fff;
-    right: 0;
-    top: 50%;
-    transition: width 0.1s ease-in-out;
+    transition: all 0.2s ease-in-out;
+    background: var(--btn-color);
+    margin: 3px 0;
+    border-radius: 5px;
+    backdrop-filter: blur(5px);
 }
 .line-breacker {
-    width: 95%;
-    height: 2px;
+    width: 100%;
+    height: 10px;
     background: #ffd600;
     margin: auto;
 }
 .copy-right {
     padding: 25px 0;
-    margin: auto;
     font-size: 15px;
+    text-align: center;
 }
 .line-breacker.even {
-    background: linear-gradient(225deg, #ffd600, transparent);
+    background: linear-gradient(225deg, #70baff, transparent);
 }
 .line-breacker.odd {
-    background: linear-gradient(45deg, #ffd600, transparent);
-}
-.line-breacker {
-    width: 95%;
-    height: 10px;
-    margin: auto;
-}
-.footer-first-row,
-.footer-second-row,
-.copy-right {
-    z-index: 10;
+    background: linear-gradient(45deg, #70baff, transparent);
 }
 .category-wrapper {
     position: absolute;
@@ -256,4 +227,7 @@
 }
 .category-wrapper li:last-child {
     margin-bottom: unset;
+}
+.auth-links a span {
+    margin-left: 5px;
 }

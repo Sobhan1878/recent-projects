@@ -52,7 +52,7 @@ span.server-error {
     background: #00000094;
     z-index: 10;
     padding: 5px;
-    color: red;
+    color: rgb(255, 255, 255);
     border-radius: 5px;
     font-size: var(--title-text-size);
 }
@@ -79,5 +79,5 @@ span.server-error {
     --title-text-size: 14px;
     --text-size: 13px;
     --sub-info-size: 12px;
-    --btn-color: #ffd600;
+    --btn-color: rgba(255, 255, 255, 0.09);
 }

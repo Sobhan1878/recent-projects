@@ -40,6 +40,19 @@ const singleArticleReducer = createSlice({
         onLoading(state) {
             state.loading = true;
         },
+        addComment(state, action) {
+            let new_comment = action.payload;
+
+            state.comments.data.push({
+                id: new_comment.id,
+                body: new_comment.comment,
+                author: new_comment.name,
+                comment_id: new_comment.comment_id,
+                type: new_comment.type,
+                answers: [],
+                create_time: new Date().toLocaleString(),
+            });
+        },
         emptySingleData(state) {
             state.article = {};
             state.lastArticles = {};
@@ -73,5 +86,10 @@ const singleArticleReducer = createSlice({
 
 export default singleArticleReducer.reducer;
 
-export const { offLoading, onLoading, emptySingleData } =
-    singleArticleReducer.actions;
+export const {
+    offLoading,
+    onLoading,
+    emptySingleData,
+    addComment,
+    endComments,
+} = singleArticleReducer.actions;

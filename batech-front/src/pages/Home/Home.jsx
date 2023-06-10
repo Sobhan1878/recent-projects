@@ -5,6 +5,7 @@ import "./home.css";
 import MainNewsCard from "./components/MainNewsCard";
 import { useDispatch, useSelector } from "react-redux";
 import {
+    emptyHomeData,
     getArticles,
     getHeadingArticles,
     getMoreArticles,
@@ -29,19 +30,27 @@ export default function Home() {
     const dispatch = useDispatch();
 
     useEffect(() => {
-        dispatch(getArticles());
-    }, []);
+        if (!Object.values(articles).length) {
+            dispatch(getArticles());
+        }
+    }, [articles]);
 
     useEffect(() => {
-        dispatch(getHeadingArticles());
-    }, []);
+        if (!Object.values(headArticles).length) {
+            dispatch(getHeadingArticles());
+        }
+    }, [headArticles]);
 
     useEffect(() => {
-        dispatch(getMostViewArticles());
-    }, []);
+        if (!Object.values(mostViewArticles).length) {
+            dispatch(getMostViewArticles());
+        }
+    }, [mostViewArticles]);
 
     useEffect(() => {
         dispatch(emptySingleData());
+
+        return () => dispatch(emptyHomeData());
     }, []);
 
     useEffect(() => {
@@ -52,7 +61,7 @@ export default function Home() {
         ) {
             dispatch(offLoading());
         }
-    }, [articles, headArticles]);
+    }, [articles, headArticles, mostViewArticles]);
 
     const handleShowMoreArticles = () => {
         const articleCount = articles.meta.count;
@@ -96,10 +105,7 @@ export default function Home() {
                                 ))}
                                 <div className="show-more-btn">
                                     {paginationLoader ? (
-                                        <ScaleLoader
-                                            color={"var(--btn-color)"}
-                                            height={20}
-                                        />
+                                        <ScaleLoader color="#fff" height={20} />
                                     ) : (
                                         <button
                                             type="submit"

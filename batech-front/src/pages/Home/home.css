@@ -166,9 +166,9 @@
     background: var(--btn-color);
     border: none;
     border-radius: 5px;
-    font-weight: bold;
     font-size: var(--title-text-size);
     cursor: pointer;
+    color: #fff;
 }
 .show-more-btn {
     display: flex;

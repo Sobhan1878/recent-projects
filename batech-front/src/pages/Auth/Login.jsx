@@ -2,10 +2,17 @@ import { useFormik } from "formik";
 import { loginValidation } from "../../services/formValidationSchema";
 import { Link } from "react-router-dom";
 import Request from "../../services/request";
+import { ScaleLoader } from "react-spinners";
 
 const req = new Request();
 
-export default function Login({ handleActiveForm, handleLoggedInUser, logo }) {
+export default function Login({
+    handleActiveForm,
+    handleLoggedInUser,
+    logo,
+    setLoading,
+    onLoad,
+}) {
     const { values, errors, handleSubmit, handleChange, resetForm } = useFormik(
         {
             initialValues: {
@@ -14,6 +21,7 @@ export default function Login({ handleActiveForm, handleLoggedInUser, logo }) {
             },
             validationSchema: loginValidation,
             onSubmit: () => {
+                setLoading(true);
                 req.post("user/login/", values).then((res) =>
                     handleLoggedInUser(res.data)
                 );
@@ -23,6 +31,11 @@ export default function Login({ handleActiveForm, handleLoggedInUser, logo }) {
     );
     return (
         <div className="auth-form login">
+            {onLoad && (
+                <div className="form-loader">
+                    <ScaleLoader color="#fff" height={20} />
+                </div>
+            )}
             <div className="auth-form-header">
                 <div className="logo">
                     <Link to="/">

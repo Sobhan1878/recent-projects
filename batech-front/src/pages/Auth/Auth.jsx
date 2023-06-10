@@ -29,28 +29,38 @@ export default function Auth() {
         }
     }, [loggedInUser]);
 
+    useEffect(() => {
+        if (Object.keys(loggedInUser).length && loading) {
+            setLoading(false);
+            return () => setLoggedInUser({});
+        }
+    }, [loading, loggedInUser]);
+
     if (navtohome) {
         return <Navigate to="/" />;
     }
 
     return (
         <>
-            {loading && <ClientLoading />}
             <div className="heading auth">
                 {activeForm === "login" ? (
                     <Login
                         handleActiveForm={setActiveForm}
                         handleLoggedInUser={setLoggedInUser}
                         logo={logo}
+                        setLoading={setLoading}
+                        onLoad={loading}
                     />
                 ) : (
                     <Register
                         handleActiveForm={setActiveForm}
                         handleLoggedInUser={setLoggedInUser}
                         logo={logo}
+                        setLoading={setLoading}
+                        onLoad={loading}
                     />
                 )}
-                {loginError.length && (
+                {loginError.length > 0 && (
                     <span className="server-error">{loginError}</span>
                 )}
             </div>

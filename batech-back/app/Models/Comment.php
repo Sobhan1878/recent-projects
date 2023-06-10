@@ -8,11 +8,12 @@ use Illuminate\Database\Eloquent\Model;
 class Comment extends Model
 {
 
-    protected $fillable = ['comment', 'user_id', 'article_id'];
+    protected $fillable = ['unique_id', 'comment', 'user_id', 'article_id', 'comment_id', 'type'];
 
     use HasFactory;
 
-    public function article() {
+    public function article()
+    {
         return $this->belongsTo(Article::class);
     }
 
@@ -20,4 +21,10 @@ class Comment extends Model
     {
         return $this->belongsTo(User::class);
     }
+
+    public function comments()
+    {
+        return $this->hasMany(self::class, null, 'unique_id');
+    }
+
 }
